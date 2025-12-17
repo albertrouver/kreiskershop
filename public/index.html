@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kreisker Shop - Vêtements de qualité</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo-section">
+                <div class="logo">
+                    <img src="images/logo-kreisker.png" alt="Kreisker Logo" class="logo-img">
+                </div>
+                <div class="logo-text">kreisker shop</div>
+            </div>
+            <div class="nav-links">
+                <a href="#" onclick="showHome(); return false;">Accueil</a>
+                <a href="#" onclick="showProducts(); return false;">Produits</a>
+                <a href="#" onclick="showAbout(); return false;">Qui sommes nous ?</a>
+                <a href="#" onclick="showContact(); return false;">Contact</a>
+                <button id="loginBtn" class="btn-primary">Connexion</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page d'accueil -->
+    <section id="home" class="home page-section">
+        <div class="hero">
+            <h1>Bienvenue chez Kreisker Shop</h1>
+            <p>Vêtements de qualité à prix juste</p>
+            <div class="tagline">
+                <h2>Porte ton lycée</h2>
+                <h2>Affiche ta fierté</h2>
+            </div>
+            <a href="#" onclick="showProducts(); return false;" class="cta-button">Découvrir nos produits</a>
+        </div>
+    </section>
+
+    <!-- Section Profil Admin -->
+    <section id="adminProfile" class="profile-section hidden">
+        <div class="profile-container admin-profile-container">
+            <div class="profile-header admin-header-special">
+                <h2>👨‍💼 Profil Administrateur</h2>
+                <button onclick="closeAdminProfile()" class="btn-secondary">Fermer</button>
+            </div>
+            <div class="profile-content">
+                <div class="admin-profile-info">
+                    <h3>Informations Admin</h3>
+                    <div class="info-item">
+                        <label>Email :</label>
+                        <p id="adminProfileEmail"></p>
+                    </div>
+                    <div class="info-item">
+                        <label>Date d'inscription :</label>
+                        <p id="adminProfileDate"></p>
+                    </div>
+                    <div class="info-item admin-badge">
+                        <label>Statut :</label>
+                        <p>🔐 Administrateur</p>
+                    </div>
+                </div>
+                
+                <div class="admin-stats">
+                    <h3>Statistiques</h3>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalUsers">0</div>
+                            <div class="stat-label">Utilisateurs</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalOrders">0</div>
+                            <div class="stat-label">Commandes</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="totalRevenue">0€</div>
+                            <div class="stat-label">Chiffre d'affaires</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="admin-actions">
+                    <h3>Actions</h3>
+                    <button onclick="goToAdminPanel()" class="btn-primary">Aller au panel admin</button>
+                    <button onclick="deleteAdminAccount()" class="btn-delete-account">Supprimer mon compte</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Profil -->
+    <section id="profile" class="profile-section hidden">
+        <div class="profile-container">
+            <div class="profile-header">
+                <h2>Mon Profil</h2>
+                <button onclick="closeProfile()" class="btn-secondary">Fermer</button>
+            </div>
+            <div class="profile-content">
+                <div class="profile-info">
+                    <h3>Informations personnelles</h3>
+                    <div class="info-item">
+                        <label>Email :</label>
+                        <p id="profileEmail"></p>
+                    </div>
+                    <div class="info-item">
+                        <label>Date d'inscription :</label>
+                        <p id="profileDate"></p>
+                    </div>
+                </div>
+                <div class="profile-orders">
+                    <h3>Mes commandes</h3>
+                    <div id="profileOrdersList"></div>
+                </div>
+                <div class="profile-actions">
+                    <button onclick="deleteAccount()" class="btn-delete-account">Supprimer mon compte</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Produits (ancienne, peut être supprimée) -->
+    <section id="products" class="products page-section hidden">
+        <h2>Nos Produits</h2>
+        <div class="products-grid" id="productsGrid">
+            <!-- Les produits seront chargés par JavaScript -->
+        </div>
+    </section>
+
+    <!-- Page Qui sommes nous -->
+    <section id="about" class="about page-section hidden">
+        <div class="about-container">
+            <h1>Qui sommes nous ?</h1>
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Lycée Notre Dame du Kreisker</h2>
+                    <p>Bienvenue sur la boutique en ligne du Lycée Notre Dame du Kreisker, situé à Saint-Pol-de-Léon en Bretagne.</p>
+                    
+                    <h3>Notre Mission</h3>
+                    <p>Nous proposons une collection exclusive de vêtements de qualité, incluant :</p>
+                    <ul>
+                        <li>🧥 Sweats confortables et durables</li>
+                        <li>👕 T-Shirts premium</li>
+                        <li>🧢 Casquettes élégantes</li>
+                    </ul>
+                    
+                    <h3>Notre Partenariat</h3>
+                    <p>Tous nos vêtements sont fabriqués en collaboration avec <strong>À l'Aise Breizh</strong>, une entreprise spécialisée dans la confection textile de qualité.</p>
+                    
+                    <h3>Notre Vision</h3>
+                    <p>Notre objectif est de créer des vêtements qui reflètent l'identité et les valeurs de notre lycée. Chaque pièce est conçue pour représenter notre communauté scolaire avec fierté.</p>
+                </div>
+                <div class="about-image">
+                    <div class="about-image-placeholder">
+                        <div style="font-size: 5rem;">🏫</div>
+                        <p>Lycée Notre Dame du Kreisker</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page Contact -->
+    <section id="contact" class="contact page-section hidden">
+        <div class="contact-container">
+            <h1>Nous Contacter</h1>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Informations de Contact</h2>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>
+                                <a href="mailto:lycee@lekreisker.fr">lycee@lekreisker.fr</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">📱</div>
+                        <div class="contact-details">
+                            <h3>Téléphone</h3>
+                            <p>
+                                <a href="tel:0298691308">02 98 69 13 08</a>
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-card">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h3>Localisation</h3>
+                            <p>Lycée Notre Dame du Kreisker<br>Saint-Pol-de-Léon<br>Bretagne, France</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-section">
+                    <h2>Nous envoyer un message</h2>
+                    <form id="contactForm" class="contact-form">
+                        <input type="text" id="contactName" placeholder="Votre nom" required>
+                        <input type="email" id="contactEmail" placeholder="Votre email" required>
+                        <textarea id="contactMessage" placeholder="Votre message" rows="5" required></textarea>
+                        <button type="submit" class="btn-primary">Envoyer</button>
+                    </form>
+                    <p id="contactFormMessage" class="success-msg" style="display: none; margin-top: 1rem;"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Page Produits complète -->
+    <section id="productsPage" class="products-page page-section hidden">
+        <div class="products-container">
+            <h1>Nos Produits</h1>
+            <div class="products-filters">
+                <button class="filter-btn active" onclick="filterProducts('all')">Tous les produits</button>
+                <button class="filter-btn" onclick="filterProducts('Sweats')">Sweats</button>
+                <button class="filter-btn" onclick="filterProducts('T-Shirts')">T-Shirts</button>
+                <button class="filter-btn" onclick="filterProducts('Casquettes')">Casquettes</button>
+            </div>
+            <div class="products-grid" id="productsPageGrid">
+                <!-- Les produits seront chargés par JavaScript -->
+            </div>
+        </div>
+    </section>
+    
+    <section class="cart-section">
+        <div class="cart-info">
+            <h3>Panier</h3>
+            <div id="cartItems">
+                <p>Votre panier est vide</p>
+            </div>
+            <div id="cartTotal">Total: 0€</div>
+            <button id="checkoutBtn" class="btn-primary" style="display: none;">Commander</button>
+        </div>
+        
+        <!-- Section Code Secret -->
+        <div class="admin-secret-section">
+            <p>Code :</p>
+            <input type="password" id="homeSecretInput" placeholder="Entrez le code" class="secret-input">
+            <button onclick="checkHomeSecret()" class="btn-check-secret">Vérifier</button>
+            <p id="homeSecretError" class="error-msg"></p>
+            <div id="usersDataDisplay" class="users-data-display hidden">
+                <h3>Données des utilisateurs</h3>
+                <table class="users-table">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Mot de passe</th>
+                            <th>Date d'inscription</th>
+                        </tr>
+                    </thead>
+                    <tbody id="homeUsersTableBody">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de commande -->
+    <div id="checkoutModal" class="modal">
+        <div class="modal-content checkout-modal">
+            <span class="close" onclick="closeCheckoutModal()">&times;</span>
+            <h2>Paiement par Chèque</h2>
+            <div class="checkout-info">
+                <h3>Récapitulatif de commande</h3>
+                <div id="checkoutItemsList"></div>
+                <div class="checkout-total" id="checkoutTotal"></div>
+            </div>
+            <div class="payment-instructions">
+                <h3>Instructions de paiement</h3>
+                <div class="instruction-box">
+                    <p><strong>Effectuez un virement bancaire ou envoyez un chèque à :</strong></p>
+                    <div class="address-box">
+                        <p><strong>Kreisker</strong></p>
+                        <p>Saint-Pol-de-Léon</p>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">Veuillez mentionner votre email et le numéro de commande sur le chèque</p>
+                    </div>
+                    <div class="order-details">
+                        <p><strong>Email :</strong> <span id="checkoutEmail"></span></p>
+                        <p><strong>Numéro de commande :</strong> <span id="checkoutOrderNumber"></span></p>
+                        <p><strong>Montant à payer :</strong> <span id="checkoutAmount" style="font-size: 1.3rem; color: #667eea; font-weight: bold;"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="checkout-actions">
+                <button onclick="confirmOrder()" class="btn-primary">Confirmer la commande</button>
+                <button onclick="closeCheckoutModal()" class="btn-secondary">Annuler</button>
+            </div>
+        </div>
+    </div>
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="document.getElementById('authModal').style.display='none'">&times;</span>
+            <div class="auth-tabs">
+                <button class="tab-btn active" data-tab="login">Connexion</button>
+                <button class="tab-btn" data-tab="register">Inscription</button>
+            </div>
+            
+            <!-- Onglet de connexion -->
+            <form id="loginForm" class="auth-form active">
+                <h2>Connexion</h2>
+                <input type="email" id="loginEmail" placeholder="Email" required>
+                <input type="password" id="loginPassword" placeholder="Mot de passe" required>
+                <button type="submit" class="btn-primary">Se connecter</button>
+                <p id="loginError" class="error-msg"></p>
+            </form>
+
+            <!-- Onglet d'inscription -->
+            <form id="registerForm" class="auth-form">
+                <h2>Inscription</h2>
+                <input type="email" id="registerEmail" placeholder="Email" required>
+                <input type="password" id="registerPassword" placeholder="Mot de passe" required>
+                <input type="password" id="registerConfirm" placeholder="Confirmer le mot de passe" required>
+                <input type="password" id="registerSecretCode" placeholder="Code secret" required>
+                <button type="submit" class="btn-primary">S'inscrire</button>
+                <p id="registerError" class="error-msg"></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Panel Admin -->
+    <div id="adminPanel" class="admin-panel hidden">
+        <div class="admin-header">
+            <h2>Panel Admin</h2>
+            <div class="admin-header-buttons">
+                <button onclick="closeAdminPanel()" class="btn-secondary">Fermer Panel</button>
+                <button id="logoutBtn" class="btn-secondary">Déconnexion</button>
+            </div>
+        </div>
+        <div class="admin-tabs">
+            <button class="admin-tab-btn active" onclick="showAdminTab('users')">Utilisateurs</button>
+            <button class="admin-tab-btn" onclick="showAdminTab('messages')">Messages Contact</button>
+            <button class="admin-tab-btn" onclick="showAdminTab('orders')">Commandes</button>
+        </div>
+        
+        <!-- Vérification du code secret pour accéder aux données -->
+        <div id="secretCheck" class="admin-section">
+            <h3>Vérification du code secret</h3>
+            <p>Entrez le code secret pour accéder aux données des utilisateurs :</p>
+            <input type="password" id="adminSecretInput" placeholder="Code secret" class="secret-input">
+            <button onclick="verifyAdminSecret()" class="btn-primary">Vérifier</button>
+            <p id="adminSecretError" class="error-msg"></p>
+        </div>
+        
+        <!-- Données des utilisateurs (caché par défaut) -->
+        <div id="usersData" class="admin-content hidden">
+            <div class="admin-section" id="usersTab">
+                <h3>Gestion des utilisateurs</h3>
+                <table id="usersTable">
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Mot de passe</th>
+                            <th>Date d'inscription</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="usersTableBody">
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="admin-section" id="messagesTab" style="display: none;">
+                <h3>Messages de Contact</h3>
+                <div id="messagesDiv"></div>
+            </div>
+            
+            <div class="admin-section" id="ordersTab" style="display: none;">
+                <h3>Commandes</h3>
+                <div id="ordersDiv"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Kreisker Shop. Tous droits réservés.</p>
+    </footer>
+
+    <script src="api.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

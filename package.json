@@ -1,0 +1,19 @@
+{
+  "name": "kreiskershop",
+  "version": "1.0.0",
+  "description": "E-commerce site for Kreisker Shop",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "keywords": ["ecommerce", "shop"],
+  "author": "albertrouver",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "uuid": "^9.0.1"
+  }
+}
