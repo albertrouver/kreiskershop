@@ -1,5 +1,14 @@
 // Configuration de l'API
-const API_URL = 'http://localhost:3000/api';
+const getAPIURL = () => {
+    // En développement local
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+        return 'http://localhost:3000/api';
+    }
+    // En production (même domaine)
+    return `${window.location.origin}/api`;
+};
+
+const API_URL = getAPIURL();
 
 // Service API pour l'authentification
 const AuthService = {

@@ -13,7 +13,7 @@ Site de vente en ligne de vêtements (sweats, t-shirts, casquettes) avec systèm
 ✅ Catalogue de produits avec descriptions et prix
 ✅ Panier d'achat fonctionnel
 ✅ Système d'inscription et connexion
-✅ Code secret pour accès admin : **091220101551**
+✅ Code secret pour accès admin : 
 ✅ Panel admin pour gérer les utilisateurs et commandes
 ✅ Historique des commandes
 ✅ Interface responsive (mobile-friendly)
@@ -21,7 +21,7 @@ Site de vente en ligne de vêtements (sweats, t-shirts, casquettes) avec systèm
 
 ## 🔐 Code Secret
 ```
-091220101551
+
 ```
 Ce code est requis pour :
 - S'inscrire
@@ -108,7 +108,7 @@ const products = [
 ### Changer le code secret
 Modifiez dans `app.js` :
 ```javascript
-const SECRET_CODE = "091220101551";
+const SECRET_CODE =
 ```
 
 ### Personnaliser le design
