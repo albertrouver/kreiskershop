@@ -50,7 +50,7 @@ Ouvrir `index.html` directement dans un navigateur (fonctionnalités limitées).
 ### Pour les clients
 1. Cliquer sur "Connexion" en haut à droite
 2. Choisir "Inscription"
-3. Entrer email, mot de passe et code secret (091220101551)
+3. Entrer email, mot de passe et code secret ()
 4. Parcourir les produits
 5. Ajouter les articles au panier
 6. Cliquer "Commander"
